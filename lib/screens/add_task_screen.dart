@@ -1,7 +1,9 @@
 //ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/models/data_provider.dart';
+import 'package:todo_app/models/task.dart';
 
 class AddTaskScreen extends StatelessWidget {
   const AddTaskScreen({
@@ -50,7 +52,8 @@ class AddTaskScreen extends StatelessWidget {
                   vertical: 15,
                 )),
             onPressed: () {
-              Provider.of<Data>(context, listen: false).addTask(taskListItem);
+              final newTask = Task(name: taskListItem);
+              Provider.of<Data>(context, listen: false).addTask(newTask);
               Navigator.pop(context);
             },
             child: Text(
